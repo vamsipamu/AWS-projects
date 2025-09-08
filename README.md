@@ -49,34 +49,40 @@ Functionality:
 Data Storage: Stores all the application data in a structured format.
 Multi-AZ Setup: Ensures high availability and fault tolerance by replicating data across multiple availability zones.
 Data Retrieval and Manipulation: Handles queries and transactions from the application tier to manage the data.
-Additional Components
+
+Additional Components:
 Load Balancing
 Purpose: Distributes incoming traffic evenly across multiple instances to prevent any single instance from becoming a bottleneck.
 Implementation:
 Web Tier: The external load balancer distributes traffic to web servers.
 Application Tier: The internal load balancer distributes API requests to application servers.
+
 Health Checks
 Purpose: Continuously monitors the health of instances to ensure only healthy instances receive traffic.
 Implementation:
 Web Tier: Health checks by the external load balancer to ensure web servers are responsive.
 Application Tier: Health checks by the internal load balancer to ensure application servers are operational.
+
 Auto Scaling Groups
 Purpose: Automatically adjusts the number of running instances based on traffic load to maintain performance and cost efficiency.
 Implementation:
 Web Tier: Auto-scaling based on metrics like CPU usage or request count to add or remove web server instances.
 Application Tier: Auto-scaling based on similar metrics to adjust the number of application server instances.
+
 AWS Certificate Manager (ACM)
 Purpose: Manages SSL/TLS certificates to secure data in transit between clients and your application, ensuring encrypted communication.
 Implementation:
 Certificate Provisioning: ACM provides and manages SSL/TLS certificates for your domain learnaws.co.in.
 Certificate Deployment: The ACM certificates are associated with the public-facing Application Load Balancer (ALB) to enable HTTPS traffic.
 Automatic Renewal: ACM automatically renews certificates before they expire, ensuring uninterrupted secure connections.
-Amazon Route 53
+
+
+Amazon Route 53:
 Purpose: Manages DNS records and directs user traffic to the appropriate AWS resources, optimizing for performance and reliability.
 Implementation:
 DNS Management: Route 53 handles DNS queries for the domain learnaws.co.in, translating it into IP addresses for your Application Load Balancer.
 Traffic Routing: Route 53 directs client requests to the public-facing Application Load Balancer based on DNS records.
 Health Checks and Failover: Optionally, Route 53 performs health checks on your endpoints and can automatically reroute traffic to healthy resources if needed.
 
-Summary
+Summary:
 This architecture ensures high availability, scalability, and reliability by distributing the load, monitoring instance health, and scaling resources dynamically. The web tier serves the front-end and routes API calls, the application tier handles business logic and interacts with the database, and the database tier provides robust data storage and retrieval.
